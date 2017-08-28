@@ -12,13 +12,16 @@ import org.eclipse.paho.client.mqttv3.IMqttToken;
 import org.eclipse.paho.client.mqttv3.MqttClient;
 import org.eclipse.paho.client.mqttv3.MqttException;
 
+import java.io.UnsupportedEncodingException;
+
 public class MainActivity extends AppCompatActivity {
 
     MqttAndroidClient client;
     String clientId;
     Boolean flag = false;
-    EditText EtPort;
-    EditText EtBrokerUI;
+    EditText EtPort,ETPublish,EtBrokerUI,ETTopic;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,7 +29,25 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         EtBrokerUI  = (EditText) findViewById(R.id.EtBrokerUI);
         EtPort      = (EditText) findViewById(R.id.EtPort);
+        ETPublish   = (EditText) findViewById(R.id.ETPublish);
+        ETTopic     = (EditText) findViewById(R.id.ETTopic);
 
+    }
+
+    public void pub(View v) {
+        if (flag) {
+            String topic = ETTopic.getText().toString();
+            String message = ETPublish.getText().toString();
+            byte[] encodedPayload = new byte[0];
+            try {
+                client.publish(topic, message.getBytes(), 0, false);
+                Toast.makeText(MainActivity.this, "Published!",Toast.LENGTH_LONG).show();
+            } catch (MqttException e) {
+                e.printStackTrace();
+            }
+        }else{
+            Toast.makeText(MainActivity.this, "Not connected to a broker",Toast.LENGTH_LONG).show();
+        }
     }
 
     public  void Connect(View v){
