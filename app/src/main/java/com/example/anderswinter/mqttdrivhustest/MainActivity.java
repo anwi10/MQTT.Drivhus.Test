@@ -1,5 +1,6 @@
 package com.example.anderswinter.mqttdrivhustest;
 
+import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -10,6 +11,7 @@ import org.eclipse.paho.android.service.MqttAndroidClient;
 import org.eclipse.paho.client.mqttv3.IMqttActionListener;
 import org.eclipse.paho.client.mqttv3.IMqttToken;
 import org.eclipse.paho.client.mqttv3.MqttClient;
+import org.eclipse.paho.client.mqttv3.MqttConnectOptions;
 import org.eclipse.paho.client.mqttv3.MqttException;
 
 import java.io.UnsupportedEncodingException;
@@ -41,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
             byte[] encodedPayload = new byte[0];
             try {
                 client.publish(topic, message.getBytes(), 0, false);
-                Toast.makeText(MainActivity.this, "Published!",Toast.LENGTH_LONG).show();
+                Toast.makeText(MainActivity.this, "Published! ",Toast.LENGTH_LONG).show();
             } catch (MqttException e) {
                 e.printStackTrace();
             }
@@ -50,11 +52,19 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    public  void Connect(View v){
-        clientId = MqttClient.generateClientId();
-        client = new MqttAndroidClient(this.getApplicationContext(), EtBrokerUI.getText().toString() + ":" + EtPort.getText().toString(), clientId);
+    public void Connect(View v)
+    {
+        final String clientId = MqttClient.generateClientId();
+        //set options
+        MqttConnectOptions options = new MqttConnectOptions();
+        options.setMqttVersion(MqttConnectOptions.MQTT_VERSION_3_1);
+
+        client =
+                new MqttAndroidClient(this.getApplicationContext(), "tcp://" + EtBrokerUI.getText().toString() + ":" + EtPort.getText().toString(),
+                        clientId);
+
         try {
-            IMqttToken token = client.connect();
+            IMqttToken token = client.connect(options);
             token.setActionCallback(new IMqttActionListener() {
                 @Override
                 public void onSuccess(IMqttToken asyncActionToken) {
@@ -72,6 +82,7 @@ public class MainActivity extends AppCompatActivity {
             });
         } catch (MqttException e) {
             e.printStackTrace();
+            Toast.makeText(MainActivity.this,"Not connected2!",Toast.LENGTH_LONG).show();
         }
     }
 
