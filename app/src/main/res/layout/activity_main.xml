@@ -12,11 +12,12 @@
         android:layout_height="wrap_content"
         android:text="Connect"
         android:onClick="Connect"
-        android:layout_alignParentTop="true"
+        android:layout_marginLeft="24dp"
+        android:layout_marginStart="24dp"
+        android:layout_alignBottom="@+id/EtPort"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_marginLeft="19dp"
-        android:layout_marginStart="19dp" />
+        android:layout_marginBottom="20dp" />
 
     <Button
         android:id="@+id/DisconnBtn"
@@ -24,8 +25,7 @@
         android:layout_height="wrap_content"
         android:text="Disconnect"
         android:onClick="Disconnect"
-        android:layout_alignBaseline="@+id/EtPort"
-        android:layout_alignBottom="@+id/EtPort"
+        android:layout_below="@+id/EtPort"
         android:layout_alignLeft="@+id/ConnBtn"
         android:layout_alignStart="@+id/ConnBtn" />
 
@@ -35,7 +35,7 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="textPersonName"
-        android:hint="Broker UI"
+        android:text="172.17.178.245"
         android:layout_alignParentTop="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true" />
@@ -46,7 +46,7 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="textPersonName"
-        android:hint="Port"
+        android:text="1883"
         android:layout_alignParentTop="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
@@ -56,34 +56,55 @@
         android:id="@+id/PublishBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="49dp"
         android:text="Publish"
-        android:layout_below="@+id/ETPublish"
-        android:layout_centerHorizontal="true"
-        android:onClick="pub"/>
+        android:onClick="pub"
+        android:layout_alignBottom="@+id/ETPublish"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginRight="14dp"
+        android:layout_marginEnd="14dp" />
 
     <EditText
         android:id="@+id/ETPublish"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="64dp"
+        android:layout_marginTop="51dp"
         android:ems="10"
         android:inputType="textPersonName"
         android:hint="Text to publish"
-        android:layout_below="@+id/DisconnBtn"
-        android:layout_centerHorizontal="true"
-        />
+        android:layout_below="@+id/ETTopic"
+        android:layout_alignLeft="@+id/DisconnBtn"
+        android:layout_alignStart="@+id/DisconnBtn" />
 
     <EditText
         android:id="@+id/ETTopic"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/ETPublish"
-        android:layout_alignStart="@+id/ETPublish"
-        android:layout_below="@+id/DisconnBtn"
-        android:layout_marginTop="14dp"
+        android:layout_marginTop="13dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:hint="Topic" />
+        android:text="test/topic"
+        android:layout_below="@+id/EtPort"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <TextView
+        android:id="@+id/TwSubscribe"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/DisconnBtn"
+        android:layout_alignStart="@+id/DisconnBtn"
+        android:layout_below="@+id/PublishBtn"
+        android:hint="subscribed text" />
+
+    <Button
+        android:id="@+id/BtnClearSub"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/PublishBtn"
+        android:layout_alignRight="@+id/PublishBtn"
+        android:layout_below="@+id/TwSubscribe"
+        android:text="Clear text"
+        android:onClick="ClearDisplay"/>
 
 </RelativeLayout>
