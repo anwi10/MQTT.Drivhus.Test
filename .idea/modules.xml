@@ -2,8 +2,10 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$USER_HOME$/AndroidStudioProjects/MQTT/MQTT.iml" filepath="$USER_HOME$/AndroidStudioProjects/MQTT/MQTT.iml" />
-      <module fileurl="file://$USER_HOME$/AndroidStudioProjects/MQTT/app/app.iml" filepath="$USER_HOME$/AndroidStudioProjects/MQTT/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../../../MQTT/MQTT.iml" filepath="$PROJECT_DIR$/../../../MQTT/MQTT.iml" />
+      <module fileurl="file://$PROJECT_DIR$/MQTT.Drivhus.Test.iml" filepath="$PROJECT_DIR$/MQTT.Drivhus.Test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../../../MQTT/app/app.iml" filepath="$PROJECT_DIR$/../../../MQTT/app/app.iml" />
     </modules>
   </component>
 </project>

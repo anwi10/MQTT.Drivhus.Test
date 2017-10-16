@@ -77,7 +77,9 @@ public class MainActivity extends AppCompatActivity {
         } catch (MqttException e) {
             e.printStackTrace();
         }
+
         client.setCallback(new MqttCallback() {
+
             @Override
             public void connectionLost(Throwable cause) {
                 Toast.makeText(MainActivity.this,"Lost connection!",Toast.LENGTH_LONG).show();
